@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "742095645955",
+    "firebase_url": "https://agromap-6f1b4-default-rtdb.firebaseio.com",
+    "project_id": "agromap-6f1b4",
+    "storage_bucket": "agromap-6f1b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742095645955:android:acdb2003075c456eb54d36",
+        "android_client_info": {
+          "package_name": "com.bfam.Agromap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "742095645955-gabj6t2had8ifusim2atdm9c9e4f3r44.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA23ZtMT4R6OjYv0HobBepIXNKO6T8E70Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "742095645955-gabj6t2had8ifusim2atdm9c9e4f3r44.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
