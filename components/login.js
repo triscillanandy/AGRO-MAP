@@ -1,6 +1,8 @@
 // components/login.js
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 //import firebase from '../database/firebase';
 
 export default class Login extends Component {
@@ -26,21 +28,52 @@ export default class Login extends Component {
         isLoading: true,
       })
 
-      this.props.navigation.navigate('Dashboard')
-      // firebase
-      // .auth()
-      // .signInWithEmailAndPassword(this.state.email, this.state.password)
-      // .then((res) => {
-      //   console.log(res)
-      //   console.log('User logged-in successfully!')
-      //   this.setState({
-      //     isLoading: false,
-      //     email: '', 
-      //     password: ''
-      //   })
-      //   this.props.navigation.navigate('Dashboard')
-      // })
-      // .catch(error => this.setState({ errorMessage: error.message }))
+      var Data ={
+        Email: this.state.email,
+        Password: this.state.password,
+      };
+
+
+
+      fetch("http://192.168.2.40/agromap/login.php",{
+        method: 'post',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',  // It can be used to overcome cors errors
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(Data) //convert data to JSON
+    })
+    .then((response)=>response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
+    .then((response2)=>{
+
+      AsyncStorage.setItem("USER",JSON.stringify(response2.user));
+      
+      alert(JSON.stringify(response2.message));  
+
+      if(response2.error === 1){
+        this.setState({
+          isLoading: false,
+          email: '', 
+          password: ''
+        })
+        this.props.navigation.navigate('Dashboard')
+      }
+      else{
+        this.setState({
+          isLoading:false,
+        })
+      }
+      // console.log("response",response2)      
+      
+    })
+    .catch((error)=>{
+      // console.log("error ===>",error)
+      this.setState({
+        isLoading:false,
+      })
+        alert("Error Occured" + error);
+    })
+  
     }
   }
   render() {

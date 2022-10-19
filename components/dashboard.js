@@ -1,20 +1,51 @@
 // components/dashboard.js
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 //import firebase from '../database/firebase';
 export default class Dashboard extends Component {
   constructor() {
     super();
     this.state = { 
-      uid: ''
+      uid: '',
+      displayName:"",
     }
   }
-  // signOut = () => {
-  //   firebase.auth().signOut().then(() => {
-  //     this.props.navigation.navigate('Login')
-  //   })
-  //   .catch(error => this.setState({ errorMessage: error.message }))
-  // }  
+
+
+
+  componentDidMount(){
+
+    AsyncStorage.getItem("USER", (err, user) => {
+      if(user){
+          // const userbject= JSON.parse(user)
+
+          console.log("User",user)
+          this.setState({
+            displayName:JSON.parse(user)
+          })
+          
+          // alert(user)
+      }else{
+        this.signOut();
+      }
+    })
+
+  }
+
+
+  loadUserData(){
+    // create an API that will load user data
+  }
+
+
+  signOut(){
+    AsyncStorage.clear();
+    this.props.navigation.navigate('Login')
+  }
+  
+  
   render() {
     // this.state = { 
     //   displayName: firebase.auth().currentUser.displayName,

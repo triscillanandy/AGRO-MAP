@@ -13,6 +13,7 @@ $checkEmail =  mysqli_num_rows($exeSQL);
 
 if ($checkEmail != 0) {
     $Message = "Already registered";
+    $Error = 0;
 } else {
 
     $InsertQuerry = "INSERT INTO user(username,email, password) VALUES('$Username','$UserEmail', '$UserPW')";
@@ -20,12 +21,17 @@ if ($checkEmail != 0) {
     $R = mysqli_query($conn, $InsertQuerry);
 
     if ($R) {
-        $Message = "Complete--!";
+        $Message = "Accounted Created Successfully";
+        $Error = 1;
     } else {
         $Message = "Error";
+        $Error = 0;
     }
 }
-$response[] = array("Message" => $Message);
+
+
+$response = array("message" => $Message,"error" => $Error);
+// $response = array("error" => $Error);
 
 echo json_encode($response);
 

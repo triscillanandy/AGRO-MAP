@@ -30,46 +30,49 @@ export default class Signup extends Component {
       })
 
 
-      var InsertAPIURL = "http://10.7.4.65/agromap/signUp.php";   //API to render signup
-      var headers = {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      };
-      
+
       var Data ={
         Email: this.state.email,
-        Password: this.state.password
+        Password: this.state.password,
+        Username:this.state.name
       };
 
 
       console.log("My datga ",Data)
 
-      fetch(InsertAPIURL,{
+      fetch("http://192.168.2.40/agromap/signUp.php",{
         method: 'post',
         headers: {
           'Accept': 'application/json, text/plain, */*',  // It can be used to overcome cors errors
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(Data)
+        body: JSON.stringify(Data) //convert data to JSON
     })
     .then((response)=>response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
-    .then((response)=>{
+    .then((response2)=>{
 
-      this.setState({
-            isLoading: false,
-            name: '',
-            email: '', 
-            password: ''
-          })
-      // alert(response[0].Message);  
-
-      console.log("response",response)
       
-      // If data is in JSON => Display alert msg
-      // this.props.navigation.navigate('Login') //Navigate to next screen if authentications are valid
+      alert(JSON.stringify(response2.message));  
+
+      if(response2.error === 1){
+        this.setState({
+          isLoading: false,
+          name: '',
+          email: '', 
+          password: ''
+        })
+        this.props.navigation.navigate('Login')
+      }
+      else{
+        this.setState({
+          isLoading:false,
+        })
+      }
+      // console.log("response",response2)      
+      
     })
     .catch((error)=>{
-      console.log("error ===>",error)
+      // console.log("error ===>",error)
       this.setState({
         isLoading:false,
       })
