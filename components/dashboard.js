@@ -9,17 +9,17 @@ export default class Dashboard extends Component {
       uid: ''
     }
   }
-  signOut = () => {
-    firebase.auth().signOut().then(() => {
-      this.props.navigation.navigate('Login')
-    })
-    .catch(error => this.setState({ errorMessage: error.message }))
-  }  
+  // signOut = () => {
+  //   firebase.auth().signOut().then(() => {
+  //     this.props.navigation.navigate('Login')
+  //   })
+  //   .catch(error => this.setState({ errorMessage: error.message }))
+  // }  
   render() {
-    this.state = { 
-      displayName: firebase.auth().currentUser.displayName,
-      uid: firebase.auth().currentUser.uid
-    }    
+    // this.state = { 
+    //   displayName: firebase.auth().currentUser.displayName,
+    //   uid: firebase.auth().currentUser.uid
+    // }    
     return (
       <View style={styles.container}>
         <Text style = {styles.textStyle}>

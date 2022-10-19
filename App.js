@@ -7,6 +7,8 @@ import Signup from './components/signup';
 import Dashboard from './components/dashboard';
 const Stack = createStackNavigator();
 function MyStack() {
+ const [name, setName] = React.useState("Maria");
+
   return (
     <Stack.Navigator
       initialRouteName="Signup"

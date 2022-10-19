@@ -1,7 +1,9 @@
 // components/signup.js
+import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
 //import firebase from '../database/firebase';
+
 
 export default class Signup extends Component {
   
@@ -26,25 +28,73 @@ export default class Signup extends Component {
       this.setState({
         isLoading: true,
       })
-      firebase
-      .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then((res) => {
-        res.user.updateProfile({
-          name: this.state.name
-        })
-        console.log('User registered successfully!')
-        this.setState({
-          isLoading: false,
-          name: '',
-          email: '', 
-          password: ''
-        })
-        this.props.navigation.navigate('Login')
+
+
+      var InsertAPIURL = "http://10.7.4.65/agromap/signUp.php";   //API to render signup
+      var headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      };
+      
+      var Data ={
+        Email: this.state.email,
+        Password: this.state.password
+      };
+
+
+      console.log("My datga ",Data)
+
+      fetch(InsertAPIURL,{
+        method: 'post',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',  // It can be used to overcome cors errors
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(Data)
+    })
+    .then((response)=>response.json()) //check response type of API (CHECK OUTPUT OF DATA IS IN JSON)
+    .then((response)=>{
+
+      this.setState({
+            isLoading: false,
+            name: '',
+            email: '', 
+            password: ''
+          })
+      // alert(response[0].Message);  
+
+      console.log("response",response)
+      
+      // If data is in JSON => Display alert msg
+      // this.props.navigation.navigate('Login') //Navigate to next screen if authentications are valid
+    })
+    .catch((error)=>{
+      console.log("error ===>",error)
+      this.setState({
+        isLoading:false,
       })
-      .catch(error => this.setState({ errorMessage: error.message }))      
+        alert("Error Occured" + error);
+    })
+    
+
+
+
+
+      // console.log('User registered successfully!')
+      //   this.setState({
+      //     isLoading: false,
+      //     name: '',
+      //     email: '', 
+      //     password: ''
+      //   })
+      //   this.props.navigation.navigate('Login')
+
+    
     }
   }
+
+
+
   render() {
     if(this.state.isLoading){
       return(
@@ -55,6 +105,8 @@ export default class Signup extends Component {
     }    
     return (
       <View style={styles.container}>  
+      
+
         <TextInput
           style={styles.inputStyle}
           placeholder="Name"

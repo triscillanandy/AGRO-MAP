@@ -25,20 +25,22 @@ export default class Login extends Component {
       this.setState({
         isLoading: true,
       })
-      firebase
-      .auth()
-      .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then((res) => {
-        console.log(res)
-        console.log('User logged-in successfully!')
-        this.setState({
-          isLoading: false,
-          email: '', 
-          password: ''
-        })
-        this.props.navigation.navigate('Dashboard')
-      })
-      .catch(error => this.setState({ errorMessage: error.message }))
+
+      this.props.navigation.navigate('Dashboard')
+      // firebase
+      // .auth()
+      // .signInWithEmailAndPassword(this.state.email, this.state.password)
+      // .then((res) => {
+      //   console.log(res)
+      //   console.log('User logged-in successfully!')
+      //   this.setState({
+      //     isLoading: false,
+      //     email: '', 
+      //     password: ''
+      //   })
+      //   this.props.navigation.navigate('Dashboard')
+      // })
+      // .catch(error => this.setState({ errorMessage: error.message }))
     }
   }
   render() {
