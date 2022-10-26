@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, StatusBar, Image } from 'react-native'
-import { Colors } from '../../src/constants'
+//import { Colors } from '../../src/constants'
 
 
 const Splash = ({ navigation }) => {
@@ -8,24 +8,20 @@ const Splash = ({ navigation }) => {
     setTimeout(() => {
         navigation.replace('Login')
     }, 3000)
-    return ( <
-        View style = {
-            { flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: Colors.primary }
+    return ( <View style = {
+            { flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor:"#08E4C4"}
         } >
-        <
-        StatusBar barStyle = "light-content"
+        <StatusBar barStyle = "light-content"
         hidden = { false }
-        backgroundColor = "#465bd8" / >
-        <
-        Image source = { require('../assets/images/icon.png') }
+        backgroundColor = "#465bd8"/>
+        <Image source = { require('../assets/images/bfam.png') }
         style = {
             { width: 50, height: 50 }
         }
-        />     <
-        Text style = {
-            { fontFamily: 'OpenSans-Bold', fontSize: 30, color: Colors.white }
-        } > Nuntium < /Text> < /
-        View >
+        />   
+          <Text style = {
+            {fontSize: 30} }>Nuntium</Text> 
+            </View>
     )
 }
 

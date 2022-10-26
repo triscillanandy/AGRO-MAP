@@ -4,39 +4,33 @@ import { createStackNavigator } from '@react-navigation/stack';
 //import Login from '../screens/Login';
 //import Signup from '../screens/Signup';
 //import Splash from '../screens/Splash';
-import { Splash, Onboarding, Login } from './src/screens'
+import { Splash, Signup, Login } from './src/screens'
 
 const Stack = createStackNavigator();
 
 function MyStack() {
     return (
 
-        <
-        Stack.Navigator screenOptions = {
+        <Stack.Navigator screenOptions = {
             { headerShown: false }
         } >
 
-        <
-        Stack.Screen name = "Splash"
+        <Stack.Screen name = "Splash"
         component = { Splash }
-        /> <
-        Stack.Screen name = "Signup"
+        />
+         <Stack.Screen name = "Signup"
         component = { Signup }
-        /> <
-        Stack.Screen name = "Login"
-        component = { Login }
-        /> < /
-        Stack.Navigator >
+        /> 
+        <Stack.Screen name = "Login"
+        component = { Login }/>
+         </Stack.Navigator>
 
     );
 }
 
 export default function App() {
-    return ( <
-        NavigationContainer >
-        <
-        MyStack / >
-        <
-        /NavigationContainer>
+    return ( <NavigationContainer>
+        <MyStack/>
+        </NavigationContainer>
     );
 }
