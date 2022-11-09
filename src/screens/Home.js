@@ -3,8 +3,9 @@ import {View, Text, Image, ImageBackground} from 'react-native';
 import {TextInput,ScrollView,TouchableOpacity} from 'react-native-gesture-handler';
 //import  Icon  from '@iconify/react';
 
+
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import  MaterialCommunityIcons  from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 export default class Home extends Component {
   render() {
@@ -34,7 +35,7 @@ export default class Home extends Component {
                    paddingHorizontal:20,
                    marginHorizontal:20,
                    borderRadius:15,
-                   marginTop:25,
+                   marginTop:2,
                    flexDirection:"row",
                    alignItems:"center"
                }}>
@@ -93,11 +94,26 @@ export default class Home extends Component {
                         marginBottom:10,
                         width:147}} 
                     >
-                        
-                        <MaterialCommunityIcons name="home" color={"black"} size={24} 
-                        style = {{ width: 30, height: 30 ,marginTop: 7,
-                            marginLeft: 16} } />
-                        
+                        <View style={ {// Try setting `flexDirection` to `"row"`.
+                flexDirection: "column",
+              
+
+               alignItems: 'center'
+                
+                }}>
+                        <Image source = { require('../assets/images/farmer.png') } style = {{  width:100 ,height:100, marginLeft:10, marginTop:12 }}/>   
+                        <Text style={{
+                          color: "#0000000",
+                         
+                          fontSize: 18,
+                       
+                          marginLeft: 2,
+                          marginTop: 25,
+                       
+
+                       }}>Farmer</Text>
+                       </View>
+ 
                        
                     </View>
                     <View style={{ 
@@ -110,7 +126,30 @@ export default class Home extends Component {
                         marginBottom:10,
 
                         width:147  }} 
-                    />
+                    >
+                         <View style={ {// Try setting `flexDirection` to `"row"`.
+                flexDirection: "column",
+              
+
+               alignItems: 'center'
+                
+                }}>
+                        <Image source = { require('../assets/images/farmer.png') } style = {{  width:100 ,height:100, marginLeft:10, marginTop:12 }}/>   
+                        <Text style={{
+                          color: "#0000000",
+                         
+                          fontSize: 18,
+                       
+                          marginLeft: 2,
+                          marginTop: 25,
+                       
+
+                       }}>Trader</Text>
+                       </View>
+ 
+                        </View>
+               
+                       
                     <View>
                        
                      
@@ -139,10 +178,32 @@ export default class Home extends Component {
                         marginBottom:10,
                         width:147  }} 
                         
-                    />
+                    >
+                         <View style={ {// Try setting `flexDirection` to `"row"`.
+                flexDirection: "column",
+              
+
+               alignItems: 'center'
+                
+                }}>
+                        <Image source = { require('../assets/images/farmer.png') } style = {{  width:100 ,height:100, marginLeft:10, marginTop:12 }}/>   
+                        <Text style={{
+                          color: "#0000000",
+                         
+                          fontSize: 18,
+                       
+                          marginLeft: 2,
+                          marginTop: 25,
+                       
+
+                       }}>Service Providers</Text>
+                       </View>
+ 
+                        </View>
+        
                          
                     
-      
+                        
                    
                     
                     <View style={{ 
@@ -155,7 +216,28 @@ export default class Home extends Component {
                         marginBottom:10,
                         width:147  }} 
                         
-                    />
+                    >
+                         <View style={ {// Try setting `flexDirection` to `"row"`.
+                flexDirection: "column",
+              
+
+               alignItems: 'center'
+                
+                }}>
+                        <Image source = { require('../assets/images/farmer.png') } style = {{  width:100 ,height:100, marginLeft:10, marginTop:12 }}/>   
+                        <Text style={{
+                          color: "#0000000",
+                         
+                          fontSize: 18,
+                       
+                          marginLeft: 2,
+                          marginTop: 25,
+                       
+
+                       }}>Processors</Text>
+                       </View>
+ 
+                        </View>
                     
       
                     </View>
