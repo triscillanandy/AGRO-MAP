@@ -14,33 +14,33 @@ const TabNavigator = () => {
   return (
    
       
-    <Tab.Navigator labeled={false} barStyle={{ backgroundColor: 'black' }} activeColor="white" >
-      <Tab.Screen name="Home" component={Home}            //Home Screen
-      options={{
+    <Tab.Navigator  labeled={false} barStyle={{ backgroundColor: 'black' }} activeColor="white" >
+      <Tab.Screen name="Home"  component={Home}          //Home Screen
+      options={{headerShown:false,
         tabBarIcon: () => (
             <MaterialCommunityIcons name="home" color={"black"} size={24}/>
         ),
     }}/>
       <Tab.Screen name="Map" component={Map}        // map Screen
-      options={{
+      options={{headerShown:false,
         tabBarIcon: () => (
             <MaterialCommunityIcons name="map" color={"black"} size={24}/>
         ),
     }}/>
       <Tab.Screen name="Chat" component={Chat}      // chat Screen
-      options={{
+      options={{headerShown:false,
         tabBarIcon: () => (
             <Ionicons name="chatbox-outline" color={"black"} size={24}/>
         ),
     }}/>
     <Tab.Screen name="Lib" component={Lib}      // Library Screen
-      options={{
+      options={{headerShown:false,
         tabBarIcon: () => (
             <MaterialCommunityIcons name="book" color={"black"} size={24}/>
         ),
     }}/>
       <Tab.Screen name="Profile" component={Profile}            // Profile Screen
-      options={{
+      options={{headerShown:false,
         tabBarIcon: () => (
             <MaterialCommunityIcons name="account-circle" color={"black"} size={24}/>
         ),
@@ -56,12 +56,13 @@ const App = ()=>{
              
               <Stack.Screen name="Splash" component={Splash} />
               
-              <Stack.Screen name="TabNavigator" component={TabNavigator} screenOptions={{headerShown:true}} />
+              <Stack.Screen name="TabNavigator" component={TabNavigator} options={{headerShown:false}} />
               
               <Stack.Screen name="Login" component={Login} />
-              <Stack.Screen name="Home" component={Home} />
+             
               <Stack.Screen name="Signup" component={Signup} />
               <Stack.Screen name="Dashboard" component={Dashboard} />
+              
             </Stack.Navigator>
           </NavigationContainer>
   );
