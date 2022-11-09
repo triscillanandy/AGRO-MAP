@@ -6,7 +6,7 @@ import { StyleSheet, Text, View, StatusBar, Image } from 'react-native'
 const Splash = ({ navigation }) => {
 
     setTimeout(() => {
-        navigation.replace('Login')
+        navigation.replace('TabNavigator')
     }, 3000)
     return (
         <View style = {{ flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor:"#08E4C4"}} >
