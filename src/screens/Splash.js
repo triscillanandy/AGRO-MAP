@@ -7,7 +7,7 @@ const Splash = ({ navigation }) => {
 
     setTimeout(() => {
         navigation.replace('TabNavigator')
-    }, 3000)
+    }, 1000)
     return (
         <View style = {{ flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor:"#08E4C4"}} >
             <StatusBar barStyle = "light-content" hidden = { false } backgroundColor = "#465bd8"/>

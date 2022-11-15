@@ -2,12 +2,47 @@ import React, { Component } from 'react';
 import {View, Text, Image, ImageBackground} from 'react-native';
 import {TextInput,ScrollView,TouchableOpacity} from 'react-native-gesture-handler';
 //import  Icon  from '@iconify/react';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 
 export default class Home extends Component {
+    constructor() {
+        super();
+        this.state = { 
+          uid: '',
+          displayName:"",
+        }
+      }
+    
+    
+    
+      componentDidMount(){
+    
+        AsyncStorage.getItem("USER", (err, user) => {
+          if(user){
+              // const userbject= JSON.parse(user)
+    
+              console.log("User",user)
+              this.setState({
+                displayName:JSON.parse(user)
+              })
+              
+              // alert(user)
+          }else{
+            this.signOut();
+          }
+        })
+    
+      }
+    
+    
+      signOut(){
+        AsyncStorage.clear();
+        this.props.navigation.navigate('Login')
+      }
   render() {
    
     return(

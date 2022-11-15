@@ -15,6 +15,8 @@ const TabNavigator = () => {
    
       
     <Tab.Navigator  labeled={false} barStyle={{ backgroundColor: 'black' }} activeColor="white" >
+      
+
       <Tab.Screen name="Home"  component={Home}          //Home Screen
       options={{headerShown:false,
         tabBarIcon: () => (
@@ -56,9 +58,10 @@ const App = ()=>{
              
               <Stack.Screen name="Splash" component={Splash} />
               
-              <Stack.Screen name="TabNavigator" component={TabNavigator} options={{headerShown:false}} />
+             
               
               <Stack.Screen name="Login" component={Login} />
+              <Stack.Screen name="TabNavigator" component={TabNavigator} options={{headerShown:false}} />
              
               <Stack.Screen name="Signup" component={Signup} />
               <Stack.Screen name="Dashboard" component={Dashboard} />
