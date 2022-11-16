@@ -1,9 +1,13 @@
 #CONCEPT of  AGRO-MAP
-This i s a resource mapping app that connects farmers, traders and buyers
+This is a resource mapping app that connects farmers, traders and buyers
 
 
 PROBLEM STATMENT
 Poor  marketing features  and  disorganized marketing arrangements  faced by the agricultural sector 
+
+Ideal situation: People will be able to s
+
+Solution
 
 SCOPE OF THE PROJECT
 An agro map, that provides organized marketing arrangements for farmers, traders and processors identifying nearest   services next to people
