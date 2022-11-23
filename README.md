@@ -3,7 +3,14 @@ This i s a resource mapping app that connects farmers, traders and buyers
 
 
 PROBLEM STATMENT
-Poor  marketing features  and  disorganized marketing arrangements  faced by the agricultural sector 
+
+Poor  marketing features  and  disorganized marketing arrangements  faced by the agricultural sector
+
+Ideal situation: People will be able to locat different  agricultural business in their area 
+
+Solution
+I am proposing an agromap that will locate different resoucres and business  and easily recommend them  to people 
+
 
 SCOPE OF THE PROJECT
 An agro map, that provides organized marketing arrangements for farmers, traders and processors identifying nearest   services next to people
