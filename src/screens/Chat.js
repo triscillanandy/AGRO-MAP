@@ -1,41 +1,56 @@
-// components/dashboard.js
-import React, { Component } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
-//import firebase from '../database/firebase';
-export default class Chat extends Component {
+import MapView from 'react-native-maps';
 
+
+      
   
-  
-  
-  render() {
-    // this.state = { 
-    //   displayName: firebase.auth().currentUser.displayName,
-    //   uid: firebase.auth().currentUser.uid
-    // }    
-    return (
-      <View style={styles.container}>
-        <Text style = {styles.textStyle}>
-          Chat
-        </Text>
+import React, { useState, useEffect } from 'react';
+import { Text, View , StyleSheet} from 'react-native';
+import * as Location from 'expo-location';
+import { Marker } from 'react-native-maps';
+export default function App() {
+  const [location, setLocation] = useState();
+  const [errorMsg, setErrorMsg] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== 'granted') {
+        setErrorMsg('Permission to access location was denied');
+        return;
+      }
+
+      const location = await Location.getCurrentPositionAsync();
+      setLocation(location);
+    })();
+  }, []);
+
+  let text = 'Waiting..';
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+  }
+
+  return (
+    <View style={styles.container}>
+       <Text style={styles.paragraph}>{text}</Text>
+      <MapView
+        style={{ alignSelf: 'stretch', height: '100%' }}>
+        {
+          location && <Marker coordinate={location.coords}/>
+          
+        }
+        
+      
        
       
-      </View>
-    );
-  }
+      </MapView>
+  
+    </View>
+  );
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    display: "flex",
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 35,
-    backgroundColor: '#fff'
-  },
-  textStyle: {
-    fontSize: 15,
-    marginBottom: 20
-  }
-});
+const styles = StyleSheet.create({ 
+
+ }); 
