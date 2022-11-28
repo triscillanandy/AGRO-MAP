@@ -1,5 +1,5 @@
 
-import MapView from 'react-native-maps';
+import MapView ,{ AnimatedRegion }from 'react-native-maps';
 
 
       
@@ -14,7 +14,7 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
-      
+ 
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== 'granted') {
         setErrorMsg('Permission to access location was denied');
@@ -22,10 +22,11 @@ export default function App() {
       }
 
       const location = await Location.getCurrentPositionAsync();
+      //console.Log("MYLIVELOCATION",""+JSON.stringify(location));
       setLocation(location);
     })();
   }, []);
-
+  
   let text = 'Waiting..';
   if (errorMsg) {
     text = errorMsg;
@@ -33,10 +34,18 @@ export default function App() {
     text = JSON.stringify(location);
   }
 
+  
+
   return (
     <View style={styles.container}>
-       <Text style={styles.paragraph}>{text}</Text>
+     <Text style={styles.paragraph}>{text}</Text>
       <MapView
+       zoomEnabled={true}
+       followUserLocation={true}
+    
+           
+        showsUserLocation
+       
         style={{ alignSelf: 'stretch', height: '100%' }}>
         {
           location && <Marker coordinate={location.coords}/>
